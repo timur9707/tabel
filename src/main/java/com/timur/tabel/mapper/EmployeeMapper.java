@@ -3,7 +3,6 @@ package com.timur.tabel.mapper;
 import com.timur.tabel.entity.Employee;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

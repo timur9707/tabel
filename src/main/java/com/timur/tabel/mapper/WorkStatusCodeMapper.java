@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 @Component
 public class WorkStatusCodeMapper implements RowMapper<WorkStatusCode> {
+
     @Override
     public WorkStatusCode mapRow(ResultSet resultSet, int i) throws SQLException {
         WorkStatusCode workStatusCode = new WorkStatusCode();

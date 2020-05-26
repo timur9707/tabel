@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:jdbc="http://www.w3.org/1999/xhtml">
+
+    <jdbc:embedded-database id="dataSource" type="H2">
+        <jdbc:script location="h2db.sql"/>
+        <jdbc:script location="initDB.sql"/>
+    </jdbc:embedded-database>
+
+</beans>

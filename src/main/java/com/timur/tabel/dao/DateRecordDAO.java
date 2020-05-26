@@ -13,4 +13,5 @@ public interface DateRecordDAO {
 
     List<DateRecord> getByMonthAndDepartmentId(Integer month, Integer departmentId);
 
+    String getMonthSummaryById(Integer month, Long id);
 }

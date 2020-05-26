@@ -8,7 +8,8 @@
 #sidebar {
   float: left;
   width: 10%;
-  height: 280px;
+  height: 600px;
+  margin-top: 41px;
 }
 
 #content {
@@ -16,3 +17,15 @@
   width: 90%;
   height: 280px;
 }
+
+.day-off {
+
+  background-color:rgba(246, 71, 71, 0.5);
+}
+
+.regular-day {
+  background-color:rgba(77, 255, 77, 0.5);
+}
+
+
+

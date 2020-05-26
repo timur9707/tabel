@@ -11,5 +11,5 @@ public class EmployeeDateRecordDTO {
     private String position;
     private Long id;
     private List<String> codes;
-
+    private String monthSummary;
 }

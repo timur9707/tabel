@@ -11,35 +11,30 @@ import java.util.List;
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
 
-    @Autowired
-    JdbcTemplate jdbcTemplate;
-    @Autowired
-    EmployeeMapper employeeMapper;
+    private JdbcTemplate jdbcTemplate;
+    private EmployeeMapper employeeMapper;
 
+    @Autowired
+    public EmployeeDAOImpl(JdbcTemplate jdbcTemplate, EmployeeMapper employeeMapper) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.employeeMapper = employeeMapper;
+    }
 
     @Override
     public List<Employee> getAll() {
-        String SQL_GET_ALL = "SELECT * FROM employees";
-        return jdbcTemplate.query(SQL_GET_ALL, employeeMapper);
+        String sql = "SELECT * FROM employees";
+        return jdbcTemplate.query(sql, employeeMapper);
     }
 
     @Override
-    public List<Employee> getByDepartmentId(Long departmentId) {
-        String SQL_FIND_BY_DEPARTMENT_ID = "SELECT * FROM employees WHERE department_id = ?";
-        return jdbcTemplate.query(SQL_FIND_BY_DEPARTMENT_ID, new Object[]{departmentId}, employeeMapper);
-    }
-
-    @Autowired
-    public EmployeeDAOImpl(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    public List<Employee> getByDepartmentId(Integer departmentId) {
+        String sql = "SELECT * FROM employees WHERE department_id = ?";
+        return jdbcTemplate.query(sql, new Object[]{departmentId}, employeeMapper);
     }
 
     @Override
     public Employee getEmployeeById(Long id) {
-        String SQL_FIND_BY_ID = "SELECT * FROM employees WHERE id = ?";
-        return jdbcTemplate.queryForObject(SQL_FIND_BY_ID, new Object[]{id}, employeeMapper);
+        String sql = "SELECT * FROM employees WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{id}, employeeMapper);
     }
-
-
-
 }

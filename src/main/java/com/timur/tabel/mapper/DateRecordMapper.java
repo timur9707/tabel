@@ -5,15 +5,18 @@ import com.timur.tabel.entity.DateRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Component
 public class DateRecordMapper implements RowMapper<DateRecord> {
 
+    private WorkStatusCodeDAO workStatusCodeDAO;
+
     @Autowired
-    WorkStatusCodeDAO workStatusCodeDAO;
+    public DateRecordMapper(WorkStatusCodeDAO workStatusCodeDAO) {
+        this.workStatusCodeDAO = workStatusCodeDAO;
+    }
 
     @Override
     public DateRecord mapRow(ResultSet resultSet, int i) throws SQLException {

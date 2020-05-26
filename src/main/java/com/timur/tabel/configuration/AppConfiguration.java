@@ -7,12 +7,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.client.RestTemplate;
 
 import javax.sql.DataSource;
 
 @Configuration
-@PropertySource("classpath:application.properties")
-@ComponentScan(basePackages = "com.timur.table")
+@ComponentScan(basePackages = "com.timur.tabel")
 @ConfigurationProperties(prefix = "flyway")
 public class AppConfiguration {
 
@@ -34,5 +34,10 @@ public class AppConfiguration {
         dataSource.setPassword(password);
         dataSource.setSchema(schema);
         return dataSource;
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

@@ -9,23 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class DateRecordController {
 
-
     @Autowired
-    DateRecordService dateRecordService;
+    private DateRecordService dateRecordService;
 
-    @GetMapping("/getAll")
+    @GetMapping("/getRecordsByMonthAndDepartment")
     public List<EmployeeDateRecordDTO> getRecordsByMonthDepartment(Integer month, Integer departmentId) {
        return dateRecordService.getByMonthAndDepartment(month, departmentId);
     }
 
-    @GetMapping("/test")
-    public List<EmployeeDateRecordDTO> getRecordsByMonthDepartmentTest() {
-
-        return dateRecordService.getByMonthAndDepartment(5, 1);
+    @GetMapping("/getMonthDays")
+    public List<Integer> getMonthDays(Integer month) {
+        return dateRecordService.getMonthDays(month);
     }
-
 }

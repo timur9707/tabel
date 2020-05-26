@@ -1,9 +1,7 @@
 package com.timur.tabel.entity;
 
 import lombok.Data;
-
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 public class Employee {
@@ -18,5 +16,4 @@ public class Employee {
     private boolean isRemote;
     private String address;
     private int department_id;
-
 }

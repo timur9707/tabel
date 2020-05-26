@@ -1,60 +1,48 @@
-drop table if exists departments;
-drop table if exists employees;
+DROP TABLE if EXISTS departments;
+DROP TABLE if EXISTS employees;
 
-create table departments (
-    id  serial primary key,
-    dep_name varchar(255) unique
+CREATE TABLE departments (
+    id  smallserial PRIMARY KEY,
+    dep_name varchar(255) UNIQUE
 );
 
-create table employees (
-    id bigserial primary key,
-    first_name varchar(30) not null,
-    last_name varchar(30) not null,
+CREATE TABLE employees (
+    id bigserial PRIMARY KEY,
+    first_name varchar(30) NOT NULL,
+    last_name varchar(30) NOT NULL,
     patronymic varchar(30),
-    age int8 not null,
-    birthdate date not null,
-    position varchar(30) not null,
+    age int8 NOT NULL,
+    birthdate date NOT NULL,
+    position varchar(30) NOT NULL,
     is_remote boolean,
-    address varchar(255) not null,
-    department_id int8 not null
+    address varchar(255) NOT NULL,
+    department_id int8 NOT NULL
 );
 
-create table calendar (
-    full_date date primary key,
-    month_name varchar,
-    day_of_week varchar(12),
-    is_working_day boolean
-);
-
-create table work_status_code (
-    id serial primary key,
+CREATE TABLE work_status_code (
+    id smallserial PRIMARY KEY,
     code varchar(2),
     description varchar(255)
 );
 
-create table employee_date_record (
+CREATE TABLE employee_date_record (
     calendar_date date,
     employee_id bigserial,
     code_id int8,
-    primary key (calendar_date, employee_id)
+    PRIMARY KEY (calendar_date, employee_id)
 );
 
-alter table employees
-    add constraint dep_constraint
-    foreign key (department_id)
-    references departments(id);
+ALTER TABLE employees
+    ADD CONSTRAINT dep_constraint
+    FOREIGN KEY (department_id)
+    REFERENCES departments(id);
 
 ALTER TABLE employee_date_record
-    add constraint work_status_code_constaint
-    foreign key (code_id)
-    references work_status_code(id);
+    ADD CONSTRAINT work_status_code_constaint
+    FOREIGN KEY (code_id)
+    REFERENCES work_status_code(id);
 
-/*alter table employee_date_record
-    add constraint date_constraint
-    foreign key (calendar_date)
-    references calendar(full_date);*/
-
-alter table employee_date_record
-    add constraint employee_constraint
-    foreign key (employee_id)
-    references employees(id);
+ALTER TABLE employee_date_record
+    ADD CONSTRAINT employee_constraint
+    FOREIGN KEY (employee_id)
+    REFERENCES employees(id);

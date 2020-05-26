@@ -11,6 +11,5 @@ public interface EmployeeDAO {
 
     List<Employee> getAll();
 
-    List<Employee> getByDepartmentId(Long departmentId);
-
+    List<Employee> getByDepartmentId(Integer departmentId);
 }

@@ -9,10 +9,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class WorkStatusCodeDAOImpl implements WorkStatusCodeDAO {
 
+    private JdbcTemplate jdbcTemplate;
+    private WorkStatusCodeMapper workStatusCodeMapper;
+
     @Autowired
-    JdbcTemplate jdbcTemplate;
-    @Autowired
-    WorkStatusCodeMapper workStatusCodeMapper;
+    public WorkStatusCodeDAOImpl(JdbcTemplate jdbcTemplate, WorkStatusCodeMapper workStatusCodeMapper) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.workStatusCodeMapper = workStatusCodeMapper;
+    }
 
     @Override
     public WorkStatusCode getCodeById(Integer id) {
